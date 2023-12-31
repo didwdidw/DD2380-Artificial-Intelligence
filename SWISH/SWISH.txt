@@ -37,22 +37,42 @@ fact1(Ls) :-
     member(p(s4,_,u,_,_), Ls).
 fact2(Ls) :- 
 %   fill here
+    member(p(s2, _, _, bike, _), Ls).
 fact3(Ls) :- 
 %   fill here
+    member(p(s3, electro, _, _, _), Ls).
 fact4(Ls) :-
 %   fill here
+    member(p(_, _, _, walk, ostermalm), Ls).
 fact5(Ls) :-
 %   fill here
+    friends(s1, s3, Ls).
 fact6(Ls) :-
 %   fill here
+    findall(S, member(p(S, _, e, _, _), Ls), StudentsE),
+    length(StudentsE, CountE),
+    CountE = 2,
+
+    findall(S, member(p(S, _, u, _, _), Ls), StudentsU),
+    length(StudentsU, CountU),
+    CountU = 2,
+    !.
 fact7(Ls) :-
 %   fill here
+    member(p(_, data, _, bus, kungsholmen), Ls).
 fact8(Ls) :-
 %   fill here
+    member(p(_, physics, u, _, _), Ls),
+    member(p(_, machine, u, _, _), Ls).
 fact9(Ls) :- 
 %   fill here
+    member(p(_, electro, _, _, ostermalm), Ls).
 fact10(Ls) :-
 %   fill here
+    member(p(S, _, _, bike, _), Ls),  % The student that takes the bike
+    friends(S, Friend, Ls),             % The friend of the student
+    member(p(Friend, _, _, _, norrmalm), Ls),  % Lives in Norrmalm
+    !.
 % Problem:
 students(Ls) :-
     length(Ls, 4),                      %There are 4 students in our list Ls
